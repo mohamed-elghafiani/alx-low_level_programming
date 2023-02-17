@@ -3,8 +3,8 @@
 /**
  * main - prints the size of the various types
  *
- * Description: This function will print the size of the various types on the machine that
- *              it will run on
+ * Description: This function will print the size of the various types
+ *              on the machine that it will run on
  * Return: returns 0 if everything went good!
  */
 int main(void)
