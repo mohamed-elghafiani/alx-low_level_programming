@@ -13,35 +13,29 @@
 
 int main(void)
 {
-	int a, b, c, d;
+	int a, b;
 
-	for (a = 0; a < 10; a++)
+	for (a = 0; a < 100; a++)
 	{
-		for (b = 0; b < 10; b++)
+		for (b = a + 1; b < 100; b++)
 		{
-			for (c = a; c < 10; c++)
-			{
-				for (d = b; d < 10; d++)
-				{
-					if (a + b == c + d)
-					{
-						continue;
-					}
-					putchar(a + '0');
-					putchar(b + '0');
-					putchar(' ');
-					putchar(c + '0');
-					putchar(d + '0');
+			int a_1 = a / 10;
+			int a_2 = a % 10;
+			int b_1 = b / 10;
+			int b_2 = b % 10;
 
-					if (a + b != 17)
-					{
-					putchar(',');
-					putchar(' ');
-					}
-				}
+			putchar(a_1 + '0');
+			putchar(a_2 + '0');
+			putchar(' ');
+			putchar(b_1 + '0');
+			putchar(b_2 + '0');
+
+			if (a != 98 || b != 99)
+			{
+			putchar(',');
+			putchar(' ');
 			}
 		}
-
 	}
 
 	putchar('\n');
