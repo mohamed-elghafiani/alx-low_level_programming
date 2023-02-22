@@ -15,3 +15,6 @@ int _islower(int c);
 
 /* a function that checks for alphabetic character */
 int _isalpha(int c);
+
+/* a function to determine the sign of an int */
+int print_sign(int n);
