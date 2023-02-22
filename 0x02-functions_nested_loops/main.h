@@ -6,7 +6,7 @@ int _putchar(char c);
  * in lowercase, followed by a new line */
 void print_alphabet(void);
 
-/* function that prints 10 times the alphabet, 
+/* a function that prints 10 times the alphabet, 
  * in lowercase, followed by a new line */
 void print_alphabet_x10(void);
 
@@ -18,3 +18,6 @@ int _isalpha(int c);
 
 /* a function to determine the sign of an int */
 int print_sign(int n);
+
+/* a function that computes the absolute value of an integer */
+int _abs(int);
