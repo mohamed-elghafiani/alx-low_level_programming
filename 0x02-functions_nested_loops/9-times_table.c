@@ -21,9 +21,13 @@ void times_table(void)
 				_putchar((ixj / 10) + '0');
 				_putchar((ixj % 10) + '0');
 			}
-			else
+			else if (j > 0)
 			{
 				_putchar(' ');
+				_putchar((ixj % 10) + '0');
+			}
+			else
+			{
 				_putchar((ixj % 10) + '0');
 			}
 
