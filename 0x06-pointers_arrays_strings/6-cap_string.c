@@ -17,7 +17,7 @@ char *cap_string(char *str)
 
 	while (str[i] != '\0')
 	{
-		for (j = 0; j < 13; j++)
+		for (j = 0; j < 14; j++)
 		{
 			if (str[i] == sep[j] && is_sep != 1)
 			{
