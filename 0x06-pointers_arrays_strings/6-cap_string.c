@@ -34,6 +34,4 @@ char *cap_string(char *str)
 		is_sep = 0;
 	}
 	return (str);
-
-
 }
