@@ -8,13 +8,18 @@
 char *cap_string(char *str)
 {
 	int i = 0, j;
-	int is_sep = 1;
+	int is_sep = 0;
 	char sep[15] = {'\t', '\v', ' ', '\n', ',', ';', '.', '!', '?', '"', '('};
 
 	sep[11] = '(';
 	sep[12] = ')';
 	sep[13] = '{';
 	sep[14] = '}';
+
+	if (str[0] >= 'a' && str[0] <= 'z')
+	{
+		str[0] = str[0] + ('A' - 'a');
+	}
 
 	while (str[i] != '\0')
 	{
