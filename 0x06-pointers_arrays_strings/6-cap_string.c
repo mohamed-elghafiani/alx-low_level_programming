@@ -9,15 +9,16 @@ char *cap_string(char *str)
 {
 	int i = 0, j;
 	int is_sep = 0;
-	char sep[14] = {'\t', ' ', '\n', ',', ';', '.', '!', '?', '"', '('};
+	char sep[15] = {'\t', '\v', ' ', '\n', ',', ';', '.', '!', '?', '"', '('};
 
-	sep[10] = ')';
-	sep[11] = '{';
-	sep[12] = '}';
+	sep[11] = '(';
+	sep[12] = ')';
+	sep[13] = '{';
+	sep[14] = '}';
 
 	while (str[i] != '\0')
 	{
-		for (j = 0; j < 14; j++)
+		for (j = 0; j < 15; j++)
 		{
 			if (str[i] == sep[j] && is_sep != 1)
 			{
