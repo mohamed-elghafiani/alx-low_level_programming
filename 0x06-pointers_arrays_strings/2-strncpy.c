@@ -1,5 +1,5 @@
 /**
- * _strncpy - function that copied n bytes from @src to @dest 
+ * _strncpy - function that copied n bytes from @src to @dest
  *
  * @src: Source string
  * @dest: destination string
