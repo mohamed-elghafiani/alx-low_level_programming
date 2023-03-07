@@ -5,7 +5,7 @@
  * @s: a pointer to the location of memory to fill
  * @b: The constant byte to use for filling
  * @n: The n furst bytes of fill
- * Returns a pointer to the memory area s
+ * Return: Returns a pointer to the memory area s
  */
 
 char *_memset(char *s, char b, unsigned int n)
