@@ -18,9 +18,19 @@ int is_palindrome(char *s)
 	{
 		return (1);
 	}
-	
+
 	return (check_palindrome(s, 0, len / 2 - 1, len - 1));
 }
+
+/**
+ * check_palindrome - a helper function
+ *
+ * @s: a pointer to a string
+ * @start: starting point
+ * @h_len: half length of string
+ * @len: the length of the string
+ * Return: 0 if the string isn't palindrome and 1 if it is
+ */
 
 int check_palindrome(char *s, int start, int h_len, int len)
 {
