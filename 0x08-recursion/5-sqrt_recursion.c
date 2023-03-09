@@ -23,28 +23,29 @@ int _sqrt_recursion(int n)
 		return (n);
 	}
 
-	return (helper(n_mid, n));
+	return (helper(0, n_mid, n));
 
 }
 
 /**
  * helper - a helper function
  *
+ * @start: an integer
  * @m: an integer
  * @n: an integer
  * Return: returns an int
  */
 
-int helper(int m, int n)
+int helper(int start, int m, int n)
 {
-	if (m == 0)
+	if (start == m)
 	{
 		return (-1);
 	}
-	if (m * m == n)
+	if (start * start == n)
 	{
-		return (m);
+		return (start);
 	}
 
-	return (helper(m - 1, n));
+	return (helper(start + 1, m, n));
 }
