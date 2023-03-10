@@ -25,4 +25,11 @@ int is_palindrome(char *s);
 
 int check_palindrome(char *, int, int, int);
 
+int wildcmp(char *s1, char *s2);
+
+char *get_to(char *, char);
+
+char *skip_asterisk(char *);
+
+int if_null(char *, char *);
 #endif
