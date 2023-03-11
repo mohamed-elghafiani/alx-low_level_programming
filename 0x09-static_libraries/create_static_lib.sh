@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # compile .c files into object files
 gcc -c *.c
