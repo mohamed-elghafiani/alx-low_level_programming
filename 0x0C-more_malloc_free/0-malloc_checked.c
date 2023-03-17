@@ -16,6 +16,6 @@ void *malloc_checked(unsigned int b)
 	}
 	else
 	{
-		return (malloc(b + 1));
+		return (malloc(b));
 	}
 }
