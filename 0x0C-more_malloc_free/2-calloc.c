@@ -3,7 +3,7 @@
 
 
 /**
- * calloc - a function that allocates memory for an array, using malloc
+ * _calloc - a function that allocates memory for an array, using malloc
  *
  * @nmemb: number of array elements
  * @size: size of each array element
@@ -24,7 +24,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
-	for (i = 0; i <= size * nmemb; i++)
+	for (i = 0; i < size * nmemb; i++)
 	{
 		arr[i] = 0;
 	}
