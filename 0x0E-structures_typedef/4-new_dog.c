@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * new_dog - 
+ * new_dog - a function that creates a new dog
  *
  * @name: dog's name
  * @age: dog's age
@@ -15,6 +15,10 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *dog;
 
 	dog = malloc(sizeof(dog));
+	if (dog == NULL)
+	{
+		return (NULL);
+	}
 
 	dog->name = name;
 	dog->age = age;
