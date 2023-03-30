@@ -5,7 +5,7 @@
 /**
  * print_list - a function that prints all the elements of a list_t list.
  *
- * @list_t: a linked list
+ * @h: a linked list
  * Return: the number of nodes
  */
 
