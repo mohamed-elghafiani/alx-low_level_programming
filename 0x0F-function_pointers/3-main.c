@@ -3,14 +3,14 @@
 #include "3-calc.h"
 
 /**
- * main - test function 
+ * main - test function
  *
  * @argc: number of args passed
  * @argv: args vector
  * Return: 0 (Always)
  */
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 	int a, b;
 	char *s;
@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 	if (argc < 4)
 	{
 		printf("Error\n");
-		exit (98);
+		exit(98);
 	}
 
 	a = atoi(argv[1]);
@@ -27,12 +27,12 @@ int main(int argc, char* argv[])
 	if (get_op_func(s) == NULL)
 	{
 		printf("Error\n");
-		exit (99);
+		exit(99);
 	}
 	if ((*s == '/' || *s == '%') && b == 0)
 	{
 		printf("Error\n");
-		exit (100);
+		exit(100);
 	}
 
 	printf("%d\n", get_op_func(s)(a, b));
