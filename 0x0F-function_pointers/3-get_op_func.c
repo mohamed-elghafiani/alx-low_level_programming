@@ -23,7 +23,7 @@ int (*get_op_func(char *s))(int, int)
 	};
 	int i = 0;
 
-	if (strlen(s) >= 1)
+	if (strlen(s) >= 2)
 	{
 		return (NULL);
 	}
