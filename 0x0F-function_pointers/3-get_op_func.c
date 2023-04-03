@@ -23,11 +23,7 @@ int (*get_op_func(char *s))(int, int)
 	};
 	int i = 0;
 
-	if (strlen(s) >= 2)
-	{
-		return (NULL);
-	}
-	while (ops[i].op != NULL)
+	while (ops[i].op != NULL && strlen(s) < 2)
 	{
 		if (*(ops[i].op) == *s)
 		{
