@@ -24,10 +24,11 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		return (2);
 	}
-	for (i = 0; i < atoi(argv[1]); i++)
+	for (i = 0; i < atoi(argv[1]) - 1; i++)
 	{
 		printf("%02hhx ", ptr[i]);
 	}
+	printf("%02hhx", ptr[atoi(argv[1]) - 1]);
 	printf("\n");
 
 	return (0);
