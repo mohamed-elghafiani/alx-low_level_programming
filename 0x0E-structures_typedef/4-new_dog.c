@@ -1,5 +1,6 @@
 #include "dog.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
  * new_dog - a function that creates a new dog
@@ -21,9 +22,9 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	dog->name = name;
+	dog->name = memcpy(&dog->name, name, strlen(name) + 1);
 	dog->age = age;
-	dog->owner = owner;
+	dog->owner = memcpy(&dog->owner, owner, strlen(owner) + 1);
 
 	return (dog);
 }
