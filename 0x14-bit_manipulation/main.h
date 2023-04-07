@@ -9,4 +9,8 @@ void print_binary(unsigned long int n);
 
 void print_bits(unsigned long int n);
 
+int get_bit(unsigned long int n, unsigned int index);
+
+int get_bit(unsigned long int n, unsigned int index);
+
 #endif
