@@ -19,7 +19,7 @@ void print_binary(unsigned long int n)
 }
 
 /**
- * print_bit - a helper function that prints the binary rep. of a number
+ * print_bits - a helper function that prints the binary rep. of a number
  *
  * @n: a number
  * Return: Nothing
