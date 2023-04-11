@@ -31,12 +31,14 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	buffer = malloc(sizeof(char) * (letters + 1));
 	if (buffer == NULL)
 	{
+		fclose(f);
 		return (0);
-	}	
+	}
 	count = fread(buffer, sizeof(char), letters, f);
 	if (count == -1)
 	{
 		free(buffer);
+		fclose(f);
 		return (0);
 	}
 	printf("%s", buffer);
