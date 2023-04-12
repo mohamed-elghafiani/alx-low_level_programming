@@ -4,6 +4,7 @@
 #include <fcntl.h>
 #include <string.h>
 
+#define BUFFER_SIZE 1024
 /**
  * append_to_file - a function that append text to a file
  *
@@ -24,14 +25,14 @@ int append_to_file(const char *filename, char *text_content, int count)
 	if (o == -1)
 	{
 		dprintf(2, "Error: A  Can't write to %s\n", filename);
-		return (99);
+		exit(99);
 	}
 	w = write(o, text_content, count);
 	if (w == -1)
 	{
 		dprintf(2, "Error: O Can't write to %s\n", filename);
 		close(o);
-		return (99);
+		exit(99);
 	}
 	close(o);
 	return (1);
@@ -48,8 +49,8 @@ int append_to_file(const char *filename, char *text_content, int count)
 
 int main(int argc, char *argv[])
 {
-	char *buffer;
-	int o1, ow;
+	char buffer[BUFFER_SIZE];
+	int o1, r, c;
 
 	if (argc != 3)
 	{
@@ -62,20 +63,25 @@ int main(int argc, char *argv[])
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	buffer = malloc(1024);
-	if (read(o1, buffer, 1024) == -1)
+	do {
+		r = read(o1, buffer, BUFFER_SIZE);
+		if (r == -1)
+		{
+			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+			close(o1);
+			exit(98);
+		}
+		if (r != 0)
+		{
+			append_to_file(argv[2], buffer, r);
+		}
+	} while (r > 0);
+	c = close(o1);
+	if (c == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-		close(o1);
-		exit(98);
+		dprintf(2, "Error: Can't close fd %d\n", o1);
+		exit(100);
 	}
-	ow = append_to_file(argv[2], buffer, 1024);
-	if (ow != 1)
-	{
-		close(o1);
-		exit(ow);
-	}
-	close(o1);
 	return (0);
 }
 
