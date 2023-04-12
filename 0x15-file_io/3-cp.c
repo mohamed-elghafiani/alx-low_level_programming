@@ -5,39 +5,58 @@
 #include <string.h>
 
 #define BUFFER_SIZE 1024
+
 /**
- * append_to_file - a function that append text to a file
+ * usage_error - a function that gets called when
+ *	the number of argument is not the correct one
  *
- * Description: Create a function that append text to a file
- *	If the file already exists, do not change the permissions.
- *	if the file already exists, truncate it
- * @filename:  is the name of the file to create
- * @text_content: is a NULL terminated string to write to the file
- * @count: number of characters to append to file
- * Return: 1 on success
+ * @filename: is a string representing the filename
+ * Return: Nothing
  */
-
-int append_to_file(const char *filename, char *text_content, int count)
+void usage_error(char *filename)
 {
-	int o, w;
-
-	o = open(filename, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 00664);
-	if (o == -1)
-	{
-		dprintf(2, "Error: A  Can't write to %s\n", filename);
-		exit(99);
-	}
-	w = write(o, text_content, count);
-	if (w == -1)
-	{
-		dprintf(2, "Error: O Can't write to %s\n", filename);
-		close(o);
-		exit(99);
-	}
-	close(o);
-	return (1);
+	dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", filename);
+	exit(97);
 }
 
+/**
+ * read_error - a function that gets called when an error occured
+ *	while reading data from the source file
+ *
+ * @filename: is a string representing the filename
+ * Return: Nothing
+ */
+void read_error(char *filename)
+{
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
+	exit(98);
+}
+
+/**
+ * write_error - a function that gets called when an error occured
+ *	while writing to the destination file
+ *
+ * @filename: is a string representing the filename
+ * Return: Nothing
+ */
+void write_error(char *filename)
+{
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
+	exit(99);
+}
+
+/**
+ * close_error - a function that gets called when an error occured
+ *	while closing a file
+ *
+ * @fd: is an integer representing the file descriptor
+ * Return: Nothing
+ */
+void close_error(int fd)
+{
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+	exit(100);
+}
 
 /**
  * main - a program that copies the content of a file to another file
@@ -50,37 +69,43 @@ int append_to_file(const char *filename, char *text_content, int count)
 int main(int argc, char *argv[])
 {
 	char buffer[BUFFER_SIZE];
-	int o1, r, c;
+	int o1, o2, w, r, c1, c2;
 
 	if (argc != 3)
 	{
-		dprintf(2, "Usage: cp file_from file_to\n");
-		exit(97);
+		usage_error(argv[0]);
 	}
 	o1 = open(argv[1], O_RDONLY);
 	if (o1 == -1)
 	{
-		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
+		read_error(argv[1]);
+	}
+	o2 = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	if (o2 == -1)
+	{
+		write_error(argv[2]);
 	}
 	do {
 		r = read(o1, buffer, BUFFER_SIZE);
 		if (r == -1)
 		{
-			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
-			close(o1);
-			exit(98);
+			read_error(argv[1]);
 		}
-		if (r != 0)
+		w = write(o2, buffer, r);
+		if (w == -1)
 		{
-			append_to_file(argv[2], buffer, r);
+			write_error(argv[2]);
 		}
 	} while (r > 0);
-	c = close(o1);
-	if (c == -1)
+	c1 = close(o1);
+	if (c1 == -1)
 	{
-		dprintf(2, "Error: Can't close fd %d\n", o1);
-		exit(100);
+		close_error(o1);
+	}
+	c2 = close(o2);
+	if (c2 == -1)
+	{
+		close_error(o2);
 	}
 	return (0);
 }
