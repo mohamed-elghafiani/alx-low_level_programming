@@ -15,7 +15,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 	while (i != (sizeof(n) * 8))
 	{
-		if (((n & (1 << i)) >> i) != ((m & (1 << i)) >> i))
+		if (((n & (1UL << i)) >> i) != ((m & (1UL << i)) >> i))
 		{
 			n_one++;
 		}
