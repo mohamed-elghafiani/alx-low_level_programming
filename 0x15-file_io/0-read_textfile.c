@@ -16,7 +16,7 @@
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	char *buffer;
-	ssize_t count;
+	ssize_t rcount, wcount;
 	int fd;
 
 	if (filename == NULL)
@@ -35,22 +35,21 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		close(fd);
 		return (0);
 	}
-	count = read(fd, buffer, letters);
+	rcount = read(fd, buffer, letters);
+	close(fd);
 	if (count == -1)
 	{
 		free(buffer);
-		close(fd);
 		return (0);
 	}
-	if (write(STDOUT_FILENO, buffer, letters) == -1)
+	wcount = write(STDOUT_FILENO, buffer, letters);
+	if (wcount == -1)
 	{
 		free(buffer);
-		close(fd);
 		return (0);
 	}
 	free(buffer);
-	close(fd);
 
-	return (count);
+	return (wcount);
 }
 
