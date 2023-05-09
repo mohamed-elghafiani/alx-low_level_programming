@@ -17,7 +17,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	FILE *f;
 	char *buffer;
 	ssize_t count;
-	
+
 	if (filename == NULL)
 	{
 		return (0);
@@ -41,7 +41,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		fclose(f);
 		return (0);
 	}
-	printf("%s", buffer);
+	if (write(STDIN_FILENO, buffer, letters) == -1)
+	{
+		return (0);
+	}
 	free(buffer);
 	fclose(f);
 
