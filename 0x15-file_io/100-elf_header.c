@@ -130,9 +130,9 @@ int main(int argc, char **argv)
 	printf("%d\n", header.e_ident[EI_OSABI]);
 	printf("ABI Version:                      ");
 	printf("%d\n", header.e_ident[EI_ABIVERSION]);
-	printf("Type:                             ");
-	printf("%s\n", type_names[header.e_type]);
+	printf("Type:                             %s\n", type_names[header.e_type]);
 	printf("Entry point address:              %#lx\n", header.e_entry);
 	print_osabi(header.e_ident[EI_OSABI]);
+	close(fd);
 	return (0);
 }
