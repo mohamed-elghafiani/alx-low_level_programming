@@ -29,7 +29,7 @@ int append_text_to_file(const char *filename, char *text_content)
 		if (fo == NULL)
 		{
 			return (-1);
-		}		
+		}
 		return (1);
 	}
 	count = fwrite(text_content, sizeof(char), strlen(text_content), fo);
