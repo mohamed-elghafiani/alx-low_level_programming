@@ -126,13 +126,11 @@ int main(int argc, char **argv)
 	printf("%s\n", data_names[header.e_ident[EI_DATA]]);
 	printf("Version:                          ");
 	printf("%d (current)\n", header.e_ident[EI_VERSION]);
-	printf("OS/ABI:                           ");
-	printf("%d\n", header.e_ident[EI_OSABI]);
+	print_osabi(header.e_ident[EI_OSABI]);
 	printf("ABI Version:                      ");
 	printf("%d\n", header.e_ident[EI_ABIVERSION]);
 	printf("Type:                             %s\n", type_names[header.e_type]);
 	printf("Entry point address:              %#lx\n", header.e_entry);
-	print_osabi(header.e_ident[EI_OSABI]);
 	close(fd);
 	return (0);
 }
