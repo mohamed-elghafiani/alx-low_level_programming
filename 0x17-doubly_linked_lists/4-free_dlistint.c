@@ -10,6 +10,10 @@
 
 void free_dlistint(dlistint_t *head)
 {
+	if (head == NULL)
+	{
+		return;
+	}
 	/* Go to the end of the list */
 	while (head->next)
 	{
@@ -21,8 +25,5 @@ void free_dlistint(dlistint_t *head)
 		head = head->prev;
 		free(head->next);
 	}
-	if (head)
-	{
-		free(head);
-	}
+	free(head);
 }
