@@ -10,7 +10,8 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *htable;
-	hash_node_t *hnodes;
+	hash_node_t **hnodes;
+	unsigned int i = 0;
 
 	htable = malloc(sizeof(hash_table_t));
 	if (!htable)
@@ -21,9 +22,15 @@ hash_table_t *hash_table_create(unsigned long int size)
 	hnodes = malloc(sizeof(hash_node_t *) * size);
 	if (!hnodes)
 	{
+		free(htable);
 		return (NULL);
 	}
-	htable->array = &hnodes;
+	while (i < size)
+	{
+		hnodes[i] = NULL;
+		i++;
+	}
+	htable->array = hnodes;
 
 	return (htable);
 }
