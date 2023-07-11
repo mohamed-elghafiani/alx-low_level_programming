@@ -46,5 +46,5 @@ void hash_table_delete(hash_table_t *ht)
 		llist_delete(&ht->array[index]);
 	}
 	free(ht->array);
-	free(ht);	
+	free(ht);
 }
