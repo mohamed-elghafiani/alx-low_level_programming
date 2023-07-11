@@ -17,6 +17,7 @@ int main(void)
 
 	ht = hash_table_create(1024);
 	r = hash_table_set(ht, "betty", "cool");
+	r = hash_table_set(ht, "betty", "cool2");
 	r = hash_table_set(ht, "hetairas", "One");
 	r = hash_table_set(ht, "mentioner", "Two");
 	if (r == 0)
