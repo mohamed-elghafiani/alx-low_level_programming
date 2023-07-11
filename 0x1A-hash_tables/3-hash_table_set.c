@@ -28,11 +28,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		if (strcmp(key, tmp_node->key) == 0)
 		{
+			free(tmp_node->value);
 			tmp_node->value = strdup(value);
 			return (1);
 		}
 		tmp_node = tmp_node->next;
 	}
+	free(tmp_node);
 
 	new_node = malloc(sizeof(hash_node_t));
 	if (!new_node)
