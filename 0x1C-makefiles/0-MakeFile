@@ -1,3 +1,4 @@
+# 0-MakeFile
 all: school
 
 school: main.c school.c
