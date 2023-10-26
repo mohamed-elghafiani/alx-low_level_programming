@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Island Perimeter Module"""
 
+
 def island_perimeter(grid):
     """Calculates the island perimeter"""
     height, width = len(grid), len(grid[0])
@@ -17,5 +18,3 @@ def island_perimeter(grid):
                 if grid[h - 1][i] == 1:
                     p -= 2
     return p
-
-
